@@ -1,5 +1,5 @@
 // 登录
-import Login from '@/page/common/login.vue'
+import General from '@/page/common/general.vue'
 import Welcome from '@/page/common/welcome.vue'
 
 import Frame from '@/frame/frame.vue'
@@ -7,8 +7,8 @@ import Frame from '@/frame/frame.vue'
 
 
 export default[
-  { path: '/', redirect: '/login' },
-  { path: '/login', component: Login }, // 登录
+  { path: '/', redirect: '/general' },
+  { path: '/general', component: General }, // 登录
     {
       path: '/back-stage',
       name:'主页',
