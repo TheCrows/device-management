@@ -8,8 +8,8 @@
             <el-col :span='4'>1,023/台</el-col>
         </el-row>
         <el-row class="middleRow">
-            <el-col :span='8' class="">
-                <el-row>
+            <el-col class="leftside">
+                <el-row class="outBorder doughnutCharts" >
                     <el-row>
                         <el-col :span="12"><doughnut-chart chartId='c01'></doughnut-chart></el-col>
                         <el-col :span="12"><doughnut-chart chartId='c02'></doughnut-chart></el-col>
@@ -19,13 +19,13 @@
                         <el-col :span="12"><doughnut-chart chartId='c04'></doughnut-chart></el-col>
                     </el-row>
                 </el-row>
-                <el-row><char-table :headInfo='headInfo' :mainInfo='mainInfo'></char-table></el-row>
+                <el-row class="outBorder charTable"><char-table :headInfo='headInfo' :mainInfo='mainInfo'></char-table></el-row>
             </el-col>
-            <el-col :span='16'><chart-map chartId='c06'></chart-map></el-col>
+            <el-col class="outBorder mapView"><chart-map chartId='c06'></chart-map></el-col>
         </el-row>
         <el-row class="endRow">
-            <el-col :span='8'> <bar-simple chartId='c05'></bar-simple></el-col>
-            <el-col :span='16'>
+            <el-col class="outBorder barview"> <bar-simple chartId='c05'></bar-simple></el-col>
+            <el-col class="outBorder lineChartView">
                 <el-col :span='8'><line-chart chartId='c07'></line-chart></el-col>
                 <el-col :span='8'><line-chart chartId='c08'></line-chart></el-col>
                 <el-col :span='8'><line-chart chartId='c09'></line-chart></el-col>
@@ -90,29 +90,55 @@ export default {
     height: 100%;
     width: 100%;
     min-height: 800px;
-    background: radial-gradient(at 200px 100px, #000000, #4a89cc);
-    // background: url(../../assets/background.jpg) no-repeat center 0;
+    background: rgb(45,62,80);
     background-size: 100% 100%;
     display: flex;
     position: relative;
-    flex-wrap: wrap;
     flex-direction:column;
+    .outBorder{
+        border: 1px solid #36B09E;
+        box-shadow: inset 0 0 12px 3px #36B09E;
+    }
     >.el-row{
         width: 100%;
     }
     .headRow{
-        height: 80px;
-        background: #dddddd36;
+        height: 5vh;
         color: #fff;
         // font-size: 40px
     }
     .middleRow{
-        flex-grow: 1;
-        background: #dbd5d536
+        padding: 20px;
+        display: flex;
+        .leftside{
+            margin-right: 20px;
+            width: 550px;
+            box-sizing: content-box
+        }
+        .doughnutCharts{
+            height: 300px;
+            margin-bottom: 20px
+        }
+        .charTable{
+            height: 170px;
+        }
+        .mapView{
+            flex-grow: 1
+        }
     }
+    
     .endRow{
-        height: 200px;
-        background: #dfbfbf36
+        padding: 20px;
+        height: 170px;
+        display: flex;
+        .barview{
+            margin-right: 20px;
+            width: 550px !important;
+            box-sizing: content-box
+        }
+        .lineChartView{
+            flex-grow: 1
+        }
     }
     .el-col{
         height: 100%;

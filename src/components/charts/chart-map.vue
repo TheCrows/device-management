@@ -112,6 +112,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .chart{
-  width:600px; height:600px
+  width:600px; height:400px
 }
 </style>
