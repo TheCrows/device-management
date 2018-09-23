@@ -1,22 +1,24 @@
 <template>
     <div class="generaldiv">
         <el-row class="headRow">
-            <el-col :span='8'>智能设备管理平台</el-col>
-            <el-col :span='4'>1,023/台</el-col>
-            <el-col :span='4'>1,023/台</el-col>
-            <el-col :span='4'>1,023/台</el-col>
-            <el-col :span='4'>1,023/台</el-col>
+            <el-col class="first-title":span='8'>
+                <img src="@/assets/logo.png" alt="">
+                智能设备管理平台</el-col>
+            <el-col :span='4'><div class="info-top"><span class="blue">1,023</span>/台</div><div class="info-but">电表设备总量</div></el-col>
+            <el-col :span='4'><div class="info-top"><span class="green">2,106</span>/台</div><div class="info-but">智能井盖总量</div></el-col>
+            <el-col :span='4'><div class="info-top"><span class="gray">950</span>/台</div><div class="info-but">烟感报警设备总量</div></el-col>
+            <el-col :span='4'><div class="info-top"><span class="red">1,201</span>/台</div><div class="info-but">燃气泄漏设备总量</div></el-col>
         </el-row>
         <el-row class="middleRow">
             <el-col class="leftside">
                 <el-row class="outBorder doughnutCharts" >
                     <el-row>
-                        <el-col :span="12"><doughnut-chart chartId='c01'></doughnut-chart></el-col>
-                        <el-col :span="12"><doughnut-chart chartId='c02'></doughnut-chart></el-col>
+                        <el-col class="dc-col" :span="12"><doughnut-chart chartId='c01'></doughnut-chart></el-col>
+                        <el-col class="dc-col" :span="12"><doughnut-chart chartId='c02'></doughnut-chart></el-col>
                     </el-row>
                     <el-row>
-                        <el-col :span="12"><doughnut-chart chartId='c03'></doughnut-chart></el-col>
-                        <el-col :span="12"><doughnut-chart chartId='c04'></doughnut-chart></el-col>
+                        <el-col class="dc-col" :span="12"><doughnut-chart chartId='c03'></doughnut-chart></el-col>
+                        <el-col class="dc-col" :span="12"><doughnut-chart chartId='c04'></doughnut-chart></el-col>
                     </el-row>
                 </el-row>
                 <el-row class="outBorder charTable"><char-table :headInfo='headInfo' :mainInfo='mainInfo'></char-table></el-row>
@@ -95,6 +97,36 @@ export default {
     display: flex;
     position: relative;
     flex-direction:column;
+
+    .first-title{
+        font-size: 24px;
+        font-weight: 700;
+        padding: 10px 20px;
+        img{
+            height: 25px;
+            width: auto
+        }
+    }
+    .info-top{
+        text-align: center;
+        line-height: 28px;
+        position: relative;
+        ::after{
+            content: '';
+            height: 0;
+            width: 60px;
+            position: absolute;
+            border-top: #36B09E solid 1px;
+            bottom: 2px;
+            left: 50%;
+            margin-left: -25px
+        }
+    }
+    .info-but{
+        text-align: center;
+        height: 50%;
+    }
+
     .outBorder{
         border: 1px solid #36B09E;
         box-shadow: inset 0 0 12px 3px #36B09E;
@@ -103,12 +135,11 @@ export default {
         width: 100%;
     }
     .headRow{
-        height: 5vh;
         color: #fff;
         // font-size: 40px
     }
     .middleRow{
-        padding: 20px;
+        padding: 0 20px;
         display: flex;
         .leftside{
             margin-right: 20px;
@@ -117,7 +148,22 @@ export default {
         }
         .doughnutCharts{
             height: 300px;
-            margin-bottom: 20px
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+            >.el-row::after{
+                content: '';
+                border-top: solid green 1px;
+                position: absolute;
+                width: 300px;
+                left: 50%;
+                margin-left: -150px;
+                bottom: 10px
+            }
+            .dc-col{
+                height: 100%;
+            }
         }
         .charTable{
             height: 170px;
@@ -129,7 +175,7 @@ export default {
     
     .endRow{
         padding: 20px;
-        height: 170px;
+        height: 210px;
         display: flex;
         .barview{
             margin-right: 20px;
@@ -141,7 +187,7 @@ export default {
         }
     }
     .el-col{
-        height: 100%;
+        // height: 100%;
     }
 }
 </style>

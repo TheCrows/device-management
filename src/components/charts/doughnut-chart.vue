@@ -45,6 +45,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .chart{
-  height: 100px;
+  width: 200px;
+  height: 120px;
 }
 </style>
