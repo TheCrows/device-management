@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="mainChart">
+    <span class="cName">电表运行状态</span>
     <div class="chart" :id='chartId'></div>
   </div>
   
@@ -26,11 +27,9 @@ export default {
                     }
                 },
                 data:[
-                    {value:335, name:'直接访问'},
-                    {value:310, name:'邮件营销'},
-                    {value:234, name:'联盟广告'},
-                    {value:135, name:'视频广告'},
-                    {value:1548, name:'搜索引擎'}
+                    {value:335, name:'正常'},
+                    {value:310, name:'离线'},
+                    {value:234, name:'低电量'},
                 ]
             }
         ]
@@ -44,8 +43,18 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.mainChart{
+  padding-top: 10px;
+  padding-left: 10px;
+}
 .chart{
-  width: 200px;
-  height: 120px;
+  width: 215px;
+  height: 140px;
+}
+.cName{
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #3CBFA6;
+  letter-spacing: 1.9px;
 }
 </style>

@@ -1,35 +1,27 @@
 <template>
-  <div>
+  <div class="mainChart">
+    <span class="cName">电量折线图</span>
     <div class="chart" :id='chartId'></div>
   </div>
   
 </template>
 <script>
 import echarts from 'echarts'
+import theme from '@/assets/dark'
+echarts.registerTheme('dark', theme);
 export default {
   props:['chartId'],
   data(){
     return{
       option:{
-            title: {
-            text: '折线图堆叠'
-        },
         tooltip: {
             trigger: 'axis'
-        },
-        legend: {
-            data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
         },
         grid: {
             left: '3%',
             right: '4%',
             bottom: '3%',
             containLabel: true
-        },
-        toolbox: {
-            feature: {
-                saveAsImage: {}
-            }
         },
         xAxis: {
             type: 'category',
@@ -75,13 +67,24 @@ export default {
     }
   },
   mounted(){
-    let myChart = echarts.init(document.getElementById(this.chartId));
+    let myChart = echarts.init(document.getElementById(this.chartId),'dark');
     myChart.setOption(this.option);
   }
 }
 </script>
 <style lang="scss" scoped>
 .chart{
-  height: 150px;
+  height: 180px;
+  width: 340px
+}
+.mainChart{
+  padding-top: 10px;
+  padding-left: 10px;
+}
+.cName{
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #3CBFA6;
+  letter-spacing: 1.9px;
 }
 </style>

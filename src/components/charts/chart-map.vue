@@ -1,5 +1,6 @@
 <template>
   <div>
+    <span class="cName">设备分布总览图</span>
     <div class="chart" :id='chartId'></div>
   </div>
   
@@ -12,38 +13,21 @@ export default {
   data(){
     return{
       option:{
-        title : {
-            text: 'iphone销量',
-            subtext: '纯属虚构',
-            x:'center'
-        },
+        // title : {
+        //     text: '设备分布总览图',
+        //     x:'left'
+        // },
         tooltip : {
             trigger: 'item'
         },
         legend: {
             orient: 'vertical',
             x:'left',
-            data:['iphoneX']
-        },
-        dataRange: {
-            min: 0,
-            max: 2500,
-            x: 'left',
-            y: 'bottom',
-            text:['高','低'],           
-            calculable : true
-        },
-        toolbox: {
-            show: true,
-            orient : 'vertical',
-            x: 'right',
-            y: 'center',
-            feature : {
-                mark : {show: true},
-                dataView : {show: true, readOnly: false},
-                restore : {show: true},
-                saveAsImage : {show: true}
-            }
+            y:'bottom',
+            textStyle: {
+                color: '#fff'
+            },
+            data:['电表','燃气','烟感','井盖']
         },
         roamController: {
             show: true,
@@ -54,7 +38,7 @@ export default {
         },
         series : [
             {
-                name: 'iphoneX',
+                name: '电表',
                 type: 'map',
                 mapType: 'china',
                 roam: false,
@@ -70,6 +54,17 @@ export default {
                     {name: '河北',value: Math.round(Math.random()*1000)},
                     {name: '河南',value: Math.round(Math.random()*1000)},
                     {name: '云南',value: Math.round(Math.random()*1000)},
+                ]
+            },{
+                name: '燃气',
+                type: 'map',
+                mapType: 'china',
+                roam: false,
+                itemStyle:{
+                    normal:{label:{show:true}},
+                    emphasis:{label:{show:true}}
+                },
+                data:[
                     {name: '辽宁',value: Math.round(Math.random()*1000)},
                     {name: '黑龙江',value: Math.round(Math.random()*1000)},
                     {name: '湖南',value: Math.round(Math.random()*1000)},
@@ -79,6 +74,17 @@ export default {
                     {name: '江苏',value: Math.round(Math.random()*1000)},
                     {name: '浙江',value: Math.round(Math.random()*1000)},
                     {name: '江西',value: Math.round(Math.random()*1000)},
+                ]
+            },{
+                name: '烟感',
+                type: 'map',
+                mapType: 'china',
+                roam: false,
+                itemStyle:{
+                    normal:{label:{show:true}},
+                    emphasis:{label:{show:true}}
+                },
+                data:[
                     {name: '湖北',value: Math.round(Math.random()*1000)},
                     {name: '广西',value: Math.round(Math.random()*1000)},
                     {name: '甘肃',value: Math.round(Math.random()*1000)},
@@ -90,15 +96,26 @@ export default {
                     {name: '贵州',value: Math.round(Math.random()*1000)},
                     {name: '广东',value: Math.round(Math.random()*1000)},
                     {name: '青海',value: Math.round(Math.random()*1000)},
+                ]
+            },{
+                name: '井盖',
+                type: 'map',
+                mapType: 'china',
+                roam: false,
+                itemStyle:{
+                    normal:{label:{show:true}},
+                    emphasis:{label:{show:true}}
+                },
+                data:[
                     {name: '西藏',value: Math.round(Math.random()*1000)},
                     {name: '四川',value: Math.round(Math.random()*1000)},
                     {name: '宁夏',value: Math.round(Math.random()*1000)},
                     {name: '海南',value: Math.round(Math.random()*1000)},
                     {name: '台湾',value: Math.round(Math.random()*1000)},
                     {name: '香港',value: Math.round(Math.random()*1000)},
-                    {name: '澳门',value: Math.round(Math.random()*1000)}
+                    {name: '澳门',value: Math.round(Math.random()*1000)},
                 ]
-            }
+            },
         ] 
         }
     }
@@ -112,6 +129,17 @@ export default {
 </script>
 <style lang="scss" scoped>
 .chart{
-  width:100%; height:470px
+  width:1000px; 
+  height:500px
+}
+.mainChart{
+  padding-top: 10px;
+  padding-left: 10px;
+}
+.cName{
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #3CBFA6;
+  letter-spacing: 1.9px;
 }
 </style>

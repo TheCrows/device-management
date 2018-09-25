@@ -1,5 +1,6 @@
 <template>
   <div class="table">
+    <span class="cName">烟感设备状态</span>
     <el-row class="t_title">
       <el-col :span="6" v-for='(item,index) in headInfo' :key='"head"+index'>{{item.name}}</el-col>
     </el-row>
@@ -22,19 +23,30 @@ export default {
 <style lang="scss" scoped>
 .table{
   color: #fff;
+  padding: 10px;
   .t_title{
-    line-height: 30px;
-    text-align: center;
-    color: rgb(199, 199, 63);
-    font-size: 14px
+    text-align: left;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #FCEF87;
+    letter-spacing: 0;
+    line-height: 48px;
   }
   .t_row{
-    line-height: 30px;
-    text-align: center;
+    line-height: 48px;
+    font-family: PingFangSC-Regular;
     font-size: 14px;
-    position: relative;
-    border-top: solid green 1px;
-    color: green
+    color: #3CBFA6;
+    letter-spacing: 0;
+    text-align: left;
+    border-top: rgba(54,176,158,0.40) solid 2px
+  }
+  .cName{
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #3CBFA6;
+    letter-spacing: 1.9px;
+    line-height: 32px
   }
 }
 </style>
