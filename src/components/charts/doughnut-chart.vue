@@ -1,60 +1,57 @@
 <template>
-  <div class="mainChart">
-    <span class="cName">电表运行状态</span>
-    <div class="chart" :id='chartId'></div>
-  </div>
-  
+    <div>
+        <div class="chart" :id='chartId'></div>
+    </div>
 </template>
 <script>
-import echarts from 'echarts'
-export default {
-  props:['chartId'],
-  data(){
-    return{
-      option:{
-        tooltip: {
-            trigger: 'item',
-            formatter: "{a} <br/>{b}: {c} ({d}%)"
-        },
-        series: [
-            {
-                name:'访问来源',
-                type:'pie',
-                radius: ['50%', '70%'],
-                labelLine: {
-                    normal: {
-                        show: true
-                    }
-                },
-                data:[
-                    {value:335, name:'正常'},
-                    {value:310, name:'离线'},
-                    {value:234, name:'低电量'},
-                ]
+    import echarts from 'echarts'
+
+    export default {
+        props: ['chartId', 'title', 'dataSet'],
+        data() {
+            return {
+                option: {
+                    title: {
+                        text: this.title,
+                        textStyle: {color: '#3CBFA6', fontSize: 15}
+                    },
+                    color: ['#43D3B1', '#FCC687', '#09BDFE'],
+                    textStyle: {
+                        height: '30px',
+                        width: '30px',
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        position: 'right',
+                        formatter: "{a} <br/>{b}: {c} ({d}%)"
+                    },
+                    series: [
+                        {
+                            name: '访问来源',
+                            type: 'pie',
+                            center: ['55%', 75],
+                            radius: ['50%', '60%'],
+                            label: {fontSize: 9},
+                            labelLine: {
+                                normal: {
+                                    show: true
+                                }
+                            },
+                            data: this.dataSet
+                        }
+                    ]
+                }
             }
-        ]
+        },
+        mounted() {
+            let myChart = echarts.init(document.getElementById(this.chartId));
+            myChart.setOption(this.option);
         }
     }
-  },
-  mounted(){
-    let myChart = echarts.init(document.getElementById(this.chartId));
-    myChart.setOption(this.option);
-  }
-}
 </script>
 <style lang="scss" scoped>
-.mainChart{
-  padding-top: 10px;
-  padding-left: 10px;
-}
-.chart{
-  width: 215px;
-  height: 140px;
-}
-.cName{
-  font-family: PingFangSC-Regular;
-  font-size: 14px;
-  color: #3CBFA6;
-  letter-spacing: 1.9px;
-}
+    .chart {
+        width: 200px;
+        height: 120px;
+    }
 </style>
