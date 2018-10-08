@@ -1,54 +1,62 @@
 <template>
-  <div class="table">
-    <span class="cName">烟感设备状态</span>
-    <el-row class="t_title">
-      <el-col :span="6" v-for='(item,index) in headInfo' :key='"head"+index'>{{item.name}}</el-col>
-    </el-row>
-      
-      <el-row class="t_row" v-for='(item,index) in mainInfo' :key="'row'+index">
-        <el-col :span="6" v-for='(sitem,sindex) in headInfo' :key='"col"+sindex'>{{item[sitem.type]}}</el-col>
-      </el-row>
-  </div>
+    <div class="table">
+        <div class="title">烟感设备状态</div>
+        <el-table :data="mainInfo">
+            <el-table-column prop="time" label="时间"></el-table-column>
+            <el-table-column prop="type" label="设备类型"></el-table-column>
+            <el-table-column prop="policeType" label="报警类型"></el-table-column>
+            <el-table-column prop="address" label="地址"></el-table-column>
+        </el-table>
+    </div>
 </template>
 <script>
-export default {
-  props:['headInfo','mainInfo'],
-  data(){
-    return{
-
+    export default {
+        props: ['mainInfo'],
+        data() {
+            return {}
+        }
     }
-  }
-}
 </script>
 <style lang="scss" scoped>
-.table{
-  color: #fff;
-  padding: 10px;
-  .t_title{
-    text-align: left;
-    font-family: PingFangSC-Regular;
-    font-size: 14px;
-    color: #FCEF87;
-    letter-spacing: 0;
-    line-height: 48px;
-  }
-  .t_row{
-    line-height: 48px;
-    font-family: PingFangSC-Regular;
-    font-size: 14px;
-    color: #3CBFA6;
-    letter-spacing: 0;
-    text-align: left;
-    border-top: rgba(54,176,158,0.40) solid 2px
-  }
-  .cName{
-    font-family: PingFangSC-Regular;
-    font-size: 14px;
-    color: #3CBFA6;
-    letter-spacing: 1.9px;
-    line-height: 32px
-  }
-}
+    .table {
+        height: 100%;
+        color: #3CBFA6;
+        font-size: 14px;
+        overflow: hidden;
+
+        .title {
+            margin-bottom: 10px;
+        }
+
+        .el-table, .el-table /deep/ th, .el-table /deep/ tr {
+            background-color: transparent;
+            font-size: 14px;
+            color: #3CBFA6;
+            text-align: left;
+        }
+        .el-table /deep/ tr:hover {
+            background-color: transparent;
+            > td {
+                background-color: #304356;
+            }
+        }
+        .el-table /deep/ th, .el-table /deep/ td {
+            font-size: 14px;
+            color: #FCEF87;
+            font-weight: 400;
+            text-align: left;
+            border-bottom: 2px solid rgba(54, 176, 158, 0.40);
+
+        }
+        .el-table /deep/ td {
+            color: #3CBFA6;
+        }
+        .el-table::before {
+            height: 2px;
+            background-color: #2D3E50;
+        }
+
+    }
 </style>
 
 
